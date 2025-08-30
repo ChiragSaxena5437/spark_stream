@@ -1,0 +1,9 @@
+pyspark
+kafka-python
+tweepy
+textblob
+streamlit
+pandas
+matplotlib
+wordcloud
+nltk

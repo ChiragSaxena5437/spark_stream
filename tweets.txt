@@ -1,0 +1,5 @@
+{"username": "alice", "content": "I love Spark streaming"}
+{"username": "bob", "content": "This is bad"}
+{"username": "charlie", "content": "I feel okay today"}
+{"username": "dave", "content": "I am very happy today!"}
+{"username": "eve", "content": "This is terrible and frustrating"}
