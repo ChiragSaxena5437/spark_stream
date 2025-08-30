@@ -8,9 +8,10 @@ from streamlit_autorefresh import st_autorefresh
 
 
 PARQUET_DIR = "./stream_output/parquet"
-
+url_data = "https://www.kaggle.com/datasets/divyanshnautiyal/twitter-tweet-dataset-for-airline-reviews"
 st.set_page_config(page_title="Twitter Sentiment (Offline Viewer)", layout="wide")
-st.title("📊 Twitter Hashtag Sentiment (Loaded from Files)")
+st.title("Twitter Sentiment (Analysis)") 
+st.write("check out this link for the data used. ( Data changed to the json formmat) [Kaggle Link](%s)" % url_data)
 
 st_autorefresh(interval=10 * 1000, key="refresh")
 
@@ -83,7 +84,7 @@ with col2:
     if not by_label.empty:
         st.bar_chart(by_label)
 
-st.subheader("🌟 Trending Words")
+st.subheader("Trending Words")
 text = " ".join(filtered_df["content"].dropna().astype(str))
 if text.strip():
     wc = WordCloud(width=800, height=400, background_color="white").generate(text)

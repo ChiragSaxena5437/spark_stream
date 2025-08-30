@@ -24,7 +24,7 @@ raw_stream = spark.readStream \
     .option("port", 9999) \
     .load()
 
-parsed = raw_stream.select(from_json(col("value"), schema).alias("data")).select("data.*")
+raw_data = raw_stream.select(from_json(col("value"), schema).alias("data")).select("data.*")
 
 def get_sentiment(text):
     if text is None or text.strip() == "":
@@ -38,7 +38,7 @@ def get_sentiment(text):
         return "Neutral"
 
 sentiment_udf = udf(get_sentiment, StringType())
-with_sentiment = parsed.withColumn("sentiment", sentiment_udf(col("content")))
+with_sentiment = raw_data.withColumn("sentiment", sentiment_udf(col("content")))
 
 query_console = with_sentiment.writeStream \
     .outputMode("append") \
